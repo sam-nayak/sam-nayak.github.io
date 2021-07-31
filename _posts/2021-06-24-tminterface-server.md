@@ -2,7 +2,6 @@
 layout: document
 title:  TMInterface Server API
 date:   2021-06-24 23:00:13 +0200
-permalink: blog/tminterface-server
 ---
 
 <style>

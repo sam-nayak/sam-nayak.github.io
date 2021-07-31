@@ -1,8 +1,7 @@
 ---
 layout: post
-title:  TrackMania and a vote for publishing tool to create assisted runs 
+title:  TrackMania and a vote for publishing tool to create assisted runs
 date:   2020-06-20 23:00:13 +0200
-permalink: tmvotetas
 ---
 
 ### Introduction

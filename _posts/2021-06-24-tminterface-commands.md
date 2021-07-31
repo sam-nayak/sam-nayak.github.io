@@ -2,7 +2,6 @@
 layout: document
 title:  TMInterface Commands
 date:   2021-06-24 23:00:13 +0200
-permalink: tminterface-commands
 ---
 
 <style>
@@ -120,7 +119,7 @@ Additionally `gas` supports ranged timestamps, a command `1000-2000 gas 40000` w
 
 ### Run & input playback
 * `load` - Loads a script file with game inputs from the current directory, that can be controlled by setting the `scripts_folder` variable. If a file does not exist or the interface could not parse the file, an error will be displayed.
-    
+
     Syntax: `load [file_name.txt]`
 
     Example: `load a01.txt`
@@ -142,7 +141,7 @@ This command can be used anytime after the simulation is done because TMInterfac
 * `save_state`: saves the current race state into a 10kb file, stored in the `States` folder inside your `Documents\TMInterface` directory. This file can then be used to restore the exact state later on and can be also shared with others. The file itself *does not* contain the inputs used to get to that state. The primary way to share runs is still sharing the inputs file and save states are great for quick trial and error.
 
     Syntax: `save_state [filename.bin]`
-    
+
     Example: `save_state` - saves the current state into a file with an auto-generated filename
 
     Example: `save_state state.bin` - saves the current state into a file named `state.bin`
@@ -245,7 +244,7 @@ This command can be used anytime after the simulation is done because TMInterfac
 
 * `execute_commands` - Whether or not TMInterface should inject inputs that are currently loaded with `load` or `replay`. By default this is `true`. Set to `false` to disable input replaying.
 
-* `log_simulation` - Prints information in the console about the simulation / race events. These events include: 
+* `log_simulation` - Prints information in the console about the simulation / race events. These events include:
     - Beginning a new simulation
     - Ending a simulation
     - Passing through a checkpoint
@@ -296,7 +295,7 @@ enable the game camera and perform modifications in the game scene to make it ab
 * `controller` - The controller that will be executed at simulation time. This can be:
     - `bruteforce` - The bruteforce script. To bruteforce a replay, choose the replay you want to bruteforce, click Launch and then Validate. TMInterface will automatically open a standard output console alongside the game's window when bruteforcing, to print all relevant information and inputs if a better time is found. The script may be stopped at any point by pressing the Escape key on the keyboard (the console window has to be focused).
 
-        The bruteforce controller can work for different targets. The default target is the finish time. Other available targets are checkpoint time and trigger. See `bf_target_cp` and `bf_target_trigger`. 
+        The bruteforce controller can work for different targets. The default target is the finish time. Other available targets are checkpoint time and trigger. See `bf_target_cp` and `bf_target_trigger`.
 
         If `bf_target_cp` is `-1`, `bf_target_trigger` is checked, if `bf_target_trigger` is `-1`, then finish time is chosen.
     - `none` - No controller.
@@ -395,4 +394,3 @@ After the countdown, at time `0` or simulation time `2600`, a `_FakeIsRaceRunnin
 In the next tick `10`, it is now possible to emit events by the player. Events are always sorted by time, and stored from oldest to newest.
 
 At the end of the race, a `_FakeFinishLine` with a finish time is appended to the event buffer and the race is ended.
-

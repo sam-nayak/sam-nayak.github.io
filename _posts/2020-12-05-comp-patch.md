@@ -2,9 +2,8 @@
 layout: post
 title:  TrackMania Competition Patch
 date:   2020-12-05 23:00:13 +0200
-permalink: tmcp
 redirect_from:
-    - /tmcomppatch
+    - blog/tmcomppatch
 ---
 
 ### What is Competition Patch?
@@ -34,13 +33,13 @@ TrackMania Competition Patch is a special patch for the game that does not allow
 </div>
 
 ### Why is there a need for this patch?
-The patch is meant to solidify & validate records uploaded on important TMX categories such as Official Campaigns and Classic tracks. With the increasing interest in TAS'ing the game, the patch is a leeway into ensuring the leaderboards will stay clean for the forseeable future. Support for this patch is currently being implemented to TMX. 
+The patch is meant to solidify & validate records uploaded on important TMX categories such as Official Campaigns and Classic tracks. With the increasing interest in TAS'ing the game, the patch is a leeway into ensuring the leaderboards will stay clean for the forseeable future. Support for this patch is currently being implemented to TMX.
 
 ### How does it work?
-The patch is simply installed into the game's installation directory and from there, the patch will always work when you open the game. Under the hood, the patch overrides the input system of TrackMania so that it can verify that all inputs come from a real hardware device. The patch is in no way invasive - it **does not** install any low level drivers on your system or collect any data about it. 
+The patch is simply installed into the game's installation directory and from there, the patch will always work when you open the game. Under the hood, the patch overrides the input system of TrackMania so that it can verify that all inputs come from a real hardware device. The patch is in no way invasive - it **does not** install any low level drivers on your system or collect any data about it.
 
 ### How do I tell I'm running the game with the patch?
-To check if you're running the Competition Patch, look at the game's window title. If the game is fullscreen, switch to windowed mode and a (Competition Patch) should be visible in the title of the window. 
+To check if you're running the Competition Patch, look at the game's window title. If the game is fullscreen, switch to windowed mode and a (Competition Patch) should be visible in the title of the window.
 
 ### Common questions
 * **Q:** The patch gets detected as malicious by my antivirus.<br>

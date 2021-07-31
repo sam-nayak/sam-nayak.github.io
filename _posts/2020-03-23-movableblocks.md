@@ -2,11 +2,10 @@
 layout: post
 title:  Movable Blocks for Openplanet
 date:   2020-03-23 23:00:13 +0200
-permalink: movableblocks
 ---
 
 ### Introduction
-Movable Blocks is a plugin for Openplanet that allows you to introduce movement into your TrackMania maps. 
+Movable Blocks is a plugin for Openplanet that allows you to introduce movement into your TrackMania maps.
 
 ### Features
 With Movable Blocks you can:
@@ -55,12 +54,11 @@ This release contains new features and command extensions:
 
 
 **Q: Will Press Forward maps with movable blocks work?**<br>
-**A:** Likely not. Even though the plugin tries hard to provide same movement everytime you play, it does not hook into the game's loop so it's not "consistent" for the game's physics. This is a limitation that cannot be worked around for now. 
+**A:** Likely not. Even though the plugin tries hard to provide same movement everytime you play, it does not hook into the game's loop so it's not "consistent" for the game's physics. This is a limitation that cannot be worked around for now.
 
 ### Download & Install
-Head over to the [Openplanet plugin](https://openplanet.nl/files/31) site for download and installation instructions. 
+Head over to the [Openplanet plugin](https://openplanet.nl/files/31) site for download and installation instructions.
 
 ### Known issues
 * Trying to write anything in the Id field collapses the movable header
 * Some blocks that are made of multiple parts will not be entirely moved
-

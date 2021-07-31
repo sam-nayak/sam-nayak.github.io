@@ -1,5 +1,5 @@
 ---
-layout: document
+layout: post
 published: true
 title: Genetic Algorithms as An Approach for Machine Learning
 subtitle: EPQ Project
