@@ -45,7 +45,7 @@ function draw() {
 
     for (let i = 0; i < 20; i++) {
         let r = radius * i / 20;
-        stroke(198, 238, 13, opacity);
+        stroke(83, 165, 72, opacity);
         circle(pos.x, pos.y, r);
     }
 
