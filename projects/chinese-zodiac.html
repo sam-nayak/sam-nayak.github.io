@@ -1,0 +1,40 @@
+---
+layout: page
+published: true
+---
+
+<h1>Chinese Zodiac</h1>
+
+<form onsubmit="chineseZodiac(); return false">
+  <p>
+    <input id="year" size="32">
+  </p>
+  <input type="submit">
+  <h3>Output: </h3>
+</form>
+
+<div id="output" style="margin-top: 10px; padding: 10px 5px; color: #444; line-height: 1.5;"></div>
+
+<script type="text/javascript">
+  var f = document.forms[0];
+  
+  const animals = ['Rat', 'Ox', 'Tiger', 'Rabbit', 'Dragon', 'Snake', 'Horse', 'Goat', 'Monkey', 'Rooster', 'Dog', 'Pig'];
+  const elements = ['Wood', 'Fire', 'Earth', 'Metal', 'Water'];
+  
+  function solution(year) {
+    if (!/^\d+$/.test(year)){
+      return "Not an integer"
+    }
+    var diff = Math.abs(parseInt(year)-1924);
+    return elements[Math.floor((diff/2)%5)] + ' ' + animals[diff%12];
+  }
+  
+  function chineseZodiac() {
+
+    var output = document.querySelector('#output');
+   
+    window.setTimeout(_ => {
+      output.innerHTML = solution(f.year.value);
+    })
+  }
+</script>

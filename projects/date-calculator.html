@@ -1,0 +1,97 @@
+---
+layout: page
+published: true
+---
+
+<h1>Date Calculator</h1>
+
+<br>
+
+Start Date: <input id="start-day" size=5 placeholder="dd" style="text-align:center;margin-left:4em;"/>
+/ <input id="start-month" size=5 placeholder="mm" style="text-align:center;"/> 
+/ <input id="start-year" size=5 placeholder="yyyy" style="text-align:center"/> 
+<button onclick="todayUpdate('start')">Today</button>
+<br>    
+<br>
+End Date: <input id="end-day" size=5 placeholder="dd" style="text-align:center;margin-left:4em;">
+/ <input id="end-month" size=5 placeholder="mm" style="text-align:center">
+/ <input id="end-year" size=5 placeholder="yyyy" style="text-align:center">
+<button onclick="todayUpdate('end')">Today</button>
+<br>
+<br>
+<button onclick="dateCalculator()">Calculate</button>
+<br>
+
+<div id=output></div>
+
+<script type="text/javascript">
+  
+  function groupByCommas(n) {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  function dateCalculator(){
+    
+    var todayDate = new Date();
+    
+    var startDay = +document.getElementById("start-day").value;
+    var startMonth = +document.getElementById("start-month").value;
+    var startYear = +document.getElementById("start-year").value;
+    var endDay = +document.getElementById("end-day").value;
+    var endMonth = +document.getElementById("end-month").value;
+    var endYear = +document.getElementById("end-year").value;
+    
+    var start = new Date(startYear, startMonth - 1, startDay);
+    var end = new Date(endYear, endMonth - 1, endDay);
+    
+    if (!(start.getFullYear() == startYear && (start.getMonth() + 1) == startMonth && start.getDate() == Number(startDay))
+       || !(end.getFullYear() == endYear && (end.getMonth() + 1) == endMonth && end.getDate() == Number(endDay))){
+      return document.getElementById("output").innerHTML = "Invalid Date";
+    }
+    
+    
+    if (todayDate.toDateString() === start.toDateString()){
+      start = new Date();
+    }
+    
+    if (todayDate.toDateString() === end.toDateString()){
+      end = new Date();
+    }
+    
+    var millisecondsTotal = Math.abs(start.getTime() - end.getTime());
+    var secondsTotal = Math.floor(millisecondsTotal / 1000);
+    
+    var daysLeft = secondsTotal / (60*60*24);
+    var hoursLeft = (daysLeft%1) * 24;
+    var minutesLeft = (hoursLeft%1) * 60;
+    var secondsLeft = (minutesLeft%1) * 60;
+    
+    document.getElementById("output").innerHTML = 
+    `<br>The duration is: ${groupByCommas(Math.floor(daysLeft))} days, ${Math.floor(hoursLeft)} hours, 
+    ${Math.floor(minutesLeft)} minutes and ${Math.floor(secondsLeft)} seconds<br><br>
+            
+            ${groupByCommas(millisecondsTotal)} millisecond(s)<br>
+            ${groupByCommas(secondsTotal)} second(s)<br>
+            ${groupByCommas(Math.floor(secondsTotal / 60))} minute(s)<br>
+            ${groupByCommas(Math.floor(secondsTotal / (60*60)))} hour(s)<br>
+            ${groupByCommas(Math.floor(daysLeft))} day(s)<br>
+            ${groupByCommas(Math.floor(daysLeft / 7))} week(s)<br>
+            ${groupByCommas(Math.floor(daysLeft / 30))} month(s)<br>
+            ${groupByCommas(Math.floor(daysLeft / 365))} year(s) (+${Math.floor(daysLeft) % 365} days of a common year)`;
+    
+    timer()
+  };
+  
+  function todayUpdate(time){
+    var today = new Date();
+    
+    document.getElementById(time + "-day").value = today.getDate();
+    document.getElementById(time + "-month").value = today.getMonth() + 1;
+    document.getElementById(time + "-year").value = today.getFullYear();
+  }
+  
+   function timer() {
+    setTimeout(dateCalculator, 75);
+  }
+
+</script>

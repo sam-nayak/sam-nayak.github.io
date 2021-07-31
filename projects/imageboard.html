@@ -1,0 +1,38 @@
+---
+layout: page
+published: true
+---
+
+<textarea id="console-box" class="box-style" rows="4" cols="50" maxlength="250" ></textarea>
+
+
+
+<textarea id="post-box" rows="4" cols="50" maxlength="250" ></textarea>
+<button onclick="post()">Post</button>
+
+
+<script type="text/javascript">
+
+	function post(){
+    	
+        var newPost = document.getElementById("post-box").value;
+        document.getElementById("console").innerHTML = newPost;
+    
+    };
+
+
+</script>
+
+<style type="text/css">
+
+.box-style {
+  width: 500px;
+  height: 500px;
+  line-height: 300px;
+
+}
+
+</style>
+
+
+

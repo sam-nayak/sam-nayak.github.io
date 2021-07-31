@@ -1,0 +1,63 @@
+---
+layout: page
+published: true
+---
+
+<h1>Caesar Cipher</h1>
+<form onsubmit="caesarCipher(); return false">
+  <p>
+    <textarea id="encode" cols="80" rows="9"></textarea>
+  </p>
+  <select id="key">
+    <option value='1'>1</option>
+    <option value='2'>2</option>
+    <option value='3'>3</option>
+    <option value='4'>4</option>
+    <option value='5'>5</option>
+    <option value='6'>6</option>
+    <option value='7'>7</option>
+    <option value='8'>8</option>
+    <option value='9'>9</option>
+    <option value='10'>10</option>
+    <option value='11'>11</option>
+    <option value='12'>12</option>
+    <option value='13'>13</option>
+    <option value='14'>14</option>
+    <option value='15'>15</option>
+    <option value='16'>16</option>
+    <option value='17'>17</option>
+    <option value='18'>18</option>
+    <option value='19'>19</option>
+    <option value='20'>20</option>
+    <option value='21'>21</option>
+    <option value='22'>22</option>
+    <option value='23'>23</option>
+    <option value='24'>24</option>
+    <option value='25'>25</option>
+    <option value='26'>26</option>
+  </select>
+  <input type="submit"/>
+  <h2>Output: </h2>
+</form>
+
+
+<div id="validator" style="margin-top: 10px; padding: 10px 5px; color: #444; line-height: 1.5;"></div>
+<script type="text/javascript">
+  var f = document.forms[0];
+
+  function encryptcc(text, shift) {
+    var lower = "abcdefghijklmnopqrstuvwxyz", upper = lower.toUpperCase()
+    return text.split("").map((x, y) => lower.indexOf(x) != -1 ? lower[(lower.indexOf(x) + shift) % 26] : upper.indexOf(x) != -1 ? upper[(upper.indexOf(x) + shift) % 26] : x).join("")
+  }
+
+  function caesarCipher() {
+
+    var validator = document.querySelector('#validator');
+
+    var result = encryptcc(f.encode.value, +f.key.value);
+   
+    window.setTimeout(_ => {
+      validator.innerHTML = result
+    })
+  }
+</script>

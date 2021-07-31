@@ -1,0 +1,39 @@
+---
+layout: page
+published: true
+---
+
+<h1>Scrabble Score</h1>
+
+<input id="word" size="32" style="display: inline-block;">
+
+<select id="multiplier">
+  <option value="1">Single</option>
+  <option value="2">Double</option>
+  <option value="3">Triple</option>
+</select>
+
+<button onclick="scrabbleCalculator()">Calculate</button>
+
+<div id="score" style="margin-top: 10px; padding: 10px 5px; color: #444; line-height: 1.5;"></div>
+
+<script type="text/javascript">
+  const SCORES = {
+    "a": 1, "b": 3, "c": 3, "d": 2, "e": 1, "f": 4, "g": 2, "h": 4, "i": 1, "j": 8, "k": 5, "l": 1, "m": 3,
+    "n": 1, "o": 1, "p": 3, "q": 10, "r": 1, "s": 1, "t": 1, "u": 1, "v": 4, "w": 4, "x": 8, "y": 4, "z": 10
+  }
+
+  function scrabbleCalculator(){
+    var f = document.getElementById("word").value.split("");
+    var score = f.map(x => SCORES[x.toLowerCase()] || 0).reduce((x, y) => x + y, 0);
+
+    score *= parseInt(document.getElementById("multiplier").value);
+
+    if (f.length >= 7){
+      score += 50;
+    }   
+    
+    document.querySelector('#score').innerHTML = "Your score: " + score;
+  }
+
+</script>

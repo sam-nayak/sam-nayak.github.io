@@ -1,0 +1,22 @@
+---
+layout: page
+---
+
+<script type="text/javascript">
+!function(s){var i,o,e,r,n,d,t=s.navigator.userAgent;s.navigator.appVersion;platform=s.navigator.platform,/MSIE/.test(t)?(i="Internet Explorer",/IEMobile/.test(t)&&(e=1),o=/MSIE \d+[.]\d+/.exec(t)[0].split(" ")[1]):/Chrome/.test(t)?(/CrOS/.test(t)&&(platform="CrOS"),i="Chrome",o=/Chrome\/[\d\.]+/.exec(t)[0].split("/")[1]):/Opera/.test(t)?(i="Opera",(/mini/.test(t)||/Mobile/.test(t))&&(e=1)):/Android/.test(t)?(i="Android Webkit Browser",e=1,r=/Android\s[\.\d]+/.exec(t)[0]):/Firefox/.test(t)?(i="Firefox",/Fennec/.test(t)&&(e=1),o=/Firefox\/[\.\d]+/.exec(t)[0].split("/")[1]):/Safari/.test(t)&&(i="Safari",(/iPhone/.test(t)||/iPad/.test(t)||/iPod/.test(t))&&(r="iOS",e=1)),o||(o=/Version\/[\.\d]+/.exec(t),o=o?o[0].split("/")[1]:/Opera\/[\.\d]+/.exec(t)[0].split("/")[1]),"MacIntel"===platform||"MacPPC"===platform?(r="Mac OS X",n=/10[\.\_\d]+/.exec(t)[0],/[\_]/.test(n)&&(n=n.split("_").join("."))):"CrOS"===platform?r="ChromeOS":"Win32"===platform||"Win64"==platform?(r="Windows",d=platform.replace(/[^0-9]+/,"")):!r&&/Android/.test(t)?r="Android":!r&&/Linux/.test(platform)?r="Linux":!r&&/Windows/.test(t)&&(r="Windows");var a=[{s:"Windows 10",r:/(Windows 10.0|Windows NT 10.0)/},{s:"Windows 8.1",r:/(Windows 8.1|Windows NT 6.3)/},{s:"Windows 8",r:/(Windows 8|Windows NT 6.2)/},{s:"Windows 7",r:/(Windows 7|Windows NT 6.1)/},{s:"Windows Vista",r:/Windows NT 6.0/},{s:"Windows Server 2003",r:/Windows NT 5.2/},{s:"Windows XP",r:/(Windows NT 5.1|Windows XP)/},{s:"Windows 2000",r:/(Windows NT 5.0|Windows 2000)/},{s:"Windows ME",r:/(Win 9x 4.90|Windows ME)/},{s:"Windows 98",r:/(Windows 98|Win98)/},{s:"Windows 95",r:/(Windows 95|Win95|Windows_95)/},{s:"Windows NT 4.0",r:/(Windows NT 4.0|WinNT4.0|WinNT|Windows NT)/},{s:"Windows CE",r:/Windows CE/},{s:"Windows 3.11",r:/Win16/},{s:"Android",r:/Android/},{s:"Open BSD",r:/OpenBSD/},{s:"Sun OS",r:/SunOS/},{s:"Linux",r:/(Linux|X11)/},{s:"iOS",r:/(iPhone|iPad|iPod)/},{s:"Mac OS X",r:/Mac OS X/},{s:"Mac OS",r:/(MacPPC|MacIntel|Mac_PowerPC|Macintosh)/},{s:"QNX",r:/QNX/},{s:"UNIX",r:/UNIX/},{s:"BeOS",r:/BeOS/},{s:"OS/2",r:/OS\/2/},{s:"Search Bot",r:/(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask Jeeves\/Teoma|ia_archiver)/}];for(var W in a){var w=a[W];if(w.r.test(t)){r=w.s;break}}switch(/Windows/.test(r)&&(n=/Windows (.*)/.exec(r)[1],r="Windows"),r){case"Mac OS X":n=/Mac OS X (10[\.\_\d]+)/.exec(t)[1];break;case"Android":osVersion=/Android ([\.\_\d]+)/.exec(t)[1];break;case"iOS":n=/OS (\d+)_(\d+)_?(\d+)?/.exec(nVer),n=n[1]+"."+n[2]+"."+(0|n[3])}s.ui={browser:i,version:o,mobile:e,os:r,osversion:n,bit:d}}(this);
+</script>
+
+<script type="text/javascript">
+document.write(window.ui.browser + " " + window.ui.version);
+</script>
+
+<script type="text/javascript">
+document.write(window.ui.os + " " + window.ui.osversion);
+</script>
+
+<script type="text/javascript">
+document.write(screen.width + "x" + screen.height);</script>
+
+<script type="text/javascript">
+document.write(navigator.hardwareConcurrency)
+</script>

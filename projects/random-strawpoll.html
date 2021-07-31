@@ -1,0 +1,27 @@
+---
+layout: page
+published: true
+---
+
+<h1>Random Strawpoll Generator</h1>
+
+<input id="key" type="number" min="1" max="40" value="1">
+
+<button onclick="pollGenerator()">Generate</button>
+
+<script type="text/javascript">
+
+  function generator(){
+    const n = Math.floor(Math.random() * (10798929 - 2)) + 1
+    const m = 7424996 <= n < 10000000 ? (Math.floor(Math.random() * (10798929 - 2)) + 7424998) % 7424997 : n
+    window.open("http://www.strawpoll.me/"+m)
+  }
+
+  function pollGenerator() {
+    const amount = parseInt(+document.getElementById('key').value)
+    for (let i = 0; i < amount; i++){
+      generator()
+    }
+  }
+  
+</script>

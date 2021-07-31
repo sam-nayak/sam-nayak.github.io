@@ -1,0 +1,51 @@
+---
+layout: page
+published: true
+---
+
+<h1>Word Generator</h1>
+<br>
+
+<h3>Word Maker</h3>
+<br>
+
+<button id="word-button" onclick="wordMaker()">Generate</button><p>
+<label id="word"></label>
+
+<hr>
+
+<h3>Name Maker</h3>
+<br>
+
+<button id="name-button" onclick="nameMaker()">Generate</button><p>
+<label id="name"></label>
+
+<hr>
+
+<h3>Username Maker</h3>
+<br>
+
+<button id="username-button" onclick="usernameMaker()">Generate</button><p>
+<label id="username"></label>
+
+<script>
+  const LETTER_FREQUENCIES = "AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZ";
+  const ALPHANUMERIC = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+  const asciiLowerCase = "abcdefghijklmnopqrstuvwxyz";
+
+  function wordMaker(){
+    const word = [...Array(8)].map(_ => LETTER_FREQUENCIES[Math.floor(Math.random() * LETTER_FREQUENCIES.length)]).join("");
+    document.getElementById("word").innerHTML = word[0] + word.slice(1).toLowerCase();
+  }
+  
+  function nameMaker(){
+    const word = [...Array(8)].map(_ => asciiLowerCase[Math.floor(Math.random() * asciiLowerCase.length)]).join("");
+    document.getElementById("name").innerHTML = word[0].toUpperCase() + word.slice(1);
+  }
+  
+  function usernameMaker(){
+    const word = [...Array(8)].map(_ => ALPHANUMERIC[Math.floor(Math.random() * ALPHANUMERIC.length)]).join("");
+    document.getElementById("username").innerHTML = word;
+  }
+
+</script>

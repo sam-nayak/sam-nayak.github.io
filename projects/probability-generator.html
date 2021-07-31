@@ -1,0 +1,132 @@
+---
+layout: page
+published: true
+---
+
+<h1>Probability Generator</h1>
+
+<p>
+	Measures the probable case of winning
+</p>
+
+Iterations: <input id="iterations" value=100 size=5 style="text-align:center;margin-left:4em;"/>
+<br>
+<br>
+
+Wins: <input id="wins" size=5 value=1 style="text-align:center;margin-left:4em;"/> 
+Loses: <input id="loses" size=5 value=5 style="text-align:center;margin-left:4em;">
+<br>    
+<br>
+
+<button onclick="generateProbability()">Generate</button>
+<br>
+
+<div id=output></div>
+
+<hr>
+
+<h3>Console</h3>
+<textarea disabled id="console" cols="70" rows="8" data-role="none"></textarea>
+
+
+<script type="text/javascript">
+
+	function variance(values){
+		var avg = average(values);
+
+		var squareDiffs = values.map(value => {
+			var diff = value - avg;
+			var sqrDiff = diff * diff;
+			return sqrDiff;
+		});
+
+		var avgSquareDiff = average(squareDiffs);
+
+		return avgSquareDiff;
+	}
+	
+	const average = data => data.reduce((x, y) => x + y, 0) / data.length;
+
+	function probability(win=5, lose=1, iterations=100){
+		var total = [...Array(win)].map(_ => "Win").concat([...Array(lose)].map(_ => "Lose"));
+		var countNum = [];
+
+		for (var i = 1; i <= iterations; i++){
+			var counter = ["Win"];
+			while (total[Math.floor(Math.random() * total.length)] != "Win" && win != 0){
+				counter.push("Lose");
+			}
+			countNum.push(counter.length)
+			document.getElementById("console").value += `It took ${counter.length} iteration(s) to get a win` + (i == iterations ? "" : "\n")
+			
+		}
+		document.getElementById("console").scrollTop = document.getElementById("console").scrollHeight 
+		
+		const iterationLength = total.length;
+		
+		const iterationSort = countNum.sort((a, b) => a - b);
+    const half = Math.floor(countNum.length / 2);
+		const median = countNum.length % 2 ? countNum[half] : (countNum[half-1] + countNum[half]) / 2.0;
+		const iterationVariance = variance(countNum);
+		
+		var max = null;
+		var min = null;
+		var mode = null;
+		var totalSum = 0;
+		
+		var modeMap = {};
+		var maxEl = countNum[0];
+		var maxCount = 1;
+		
+		for (let i = 0; i < countNum.length; i++){
+			let current = countNum[i];
+			totalSum += current;
+			if (max === null || current > max)
+				max = current;
+			if (min === null || current < min)
+				min = current;
+			
+			if(modeMap[current] == null)
+				modeMap[current] = 1;
+			else
+				modeMap[current]++;  
+			if(modeMap[current] > maxCount){
+				maxEl = current;
+				maxCount = modeMap[current];
+			}
+		}
+ 
+		document.getElementById("output").innerHTML =
+			`<hr><h3>Statistics</h3>
+			Iterations: ${iterations}<br>
+			Total iterations: ${totalSum}<br><br> 
+
+			Average iterations: ${(totalSum / countNum.length).toFixed(3)}<br>
+			Expected iterations: ${(iterationLength / win).toFixed(3)}<br><br>
+
+			Odds: ${((win*100)/ iterationLength).toFixed(3)}% / ${(win / iterationLength).toFixed(3)}<br><br>
+		
+			Maximum: ${max}<br>
+			Minimum: ${min}<br>
+			Range: ${max - min}<br><br>
+
+			Median: ${median}<br>
+			Mode: ${maxEl} (${maxCount})<br>
+		  Standard Deviation: ${Math.sqrt(iterationVariance).toFixed(3)}<br>
+      Variance: ${iterationVariance.toFixed(3)}`                      
+	}
+
+	function generateProbability(){
+		document.getElementById("console").value = ""
+		
+		var iterationAmount = document.getElementById("iterations").value
+		var winAmount = document.getElementById("wins").value
+		var loseAmount = document.getElementById("loses").value
+		
+		if (!/^\d+$/.test(iterationAmount+winAmount+loseAmount) || winAmount === "0")
+			return 
+	
+		probability(+winAmount, +loseAmount, +iterationAmount)
+	}
+
+</script>

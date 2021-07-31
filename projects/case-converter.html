@@ -1,0 +1,44 @@
+---
+layout: page
+published: true
+---
+
+<h1>Case Identifier</h1>
+<form onsubmit="caseIdentifier(); return false">
+  <p>
+    <label for="case" style="width: 100px;">Case: </label>
+    <input id="case" name="case" type="case" size="32">
+  </p>
+  <input type="submit"/>
+</form>
+
+<div id="validator" style="margin-top: 10px; padding: 10px 5px; color: #444; line-height: 1.5;"></div>
+<script type="text/javascript">
+  var f = document.forms[0];
+
+  function id(c_str) {
+    if( /^([a-z]+([A-Z]{1}[a-z]+)+)$/.test(c_str) ) {
+      return 'camelCase';
+    }
+    else if( /^([a-z]+-[a-z]+)+$/.test(c_str) ) {
+      return 'kebab-case';
+    }
+    else if( /^([a-z]+_[a-z]+)+$/.test(c_str) ) {
+      return 'snake_case';
+    }
+    return 'none';
+  }
+
+  function caseIdentifier() {
+
+    var validator = document.querySelector('#validator');
+
+    var result = id(f.case.value);
+   
+    window.setTimeout(_ => {
+      validator.innerHTML = result
+    })
+  }
+</script>
+
+

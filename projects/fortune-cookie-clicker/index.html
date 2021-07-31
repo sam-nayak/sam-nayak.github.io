@@ -1,0 +1,68 @@
+---
+layout: minimal
+published: true
+---
+
+<style type="text/css">
+
+	.button-style{
+		height: 400px;
+		width: 400px;
+		outline: 0;
+    float: left;
+	}
+
+	.button-column{
+  	float: right;
+	}
+
+	#draggable {
+	  width: 18%;
+	  height: 10%;
+	  position: absolute;
+	  right: 10%;
+	  top: 5%;
+	}
+
+</style>
+
+<head>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#draggable" ).draggable();
+  } );
+  </script>
+</head>
+
+<body>
+
+<script type="text/javascript" src="fortuneCookieClicker.js"></script>
+<h1>Fortune Cookie Clicker</h1>
+<small>Version 1.0.17</small>
+
+<title>Fortune Cookie Clicker | Sam Nayak</title>
+
+<div id="draggable" class="ui-widget-content">
+  <fieldset><legend>Options</legend>
+		<p id="cookie-amount">Cookies = 0</p>
+		<p id="cps-amount">CPS = 0</p>
+
+		<p><h3>Buildings: </h3><br/>
+			<div id="store">
+				<div id="buildings-shop" class="button-column"></div>
+			</div>
+		</p>
+
+		<p>
+			<button type="button" onclick="restartGame()">Restart</button>
+		</p>
+  </fieldset>
+</div>
+
+<div>
+	<input type="image" onclick="clickCookie();" id="cookie-image" class="button-style" src="/img/fortune-cookie-image.png"/>
+</div>
+
+</body>

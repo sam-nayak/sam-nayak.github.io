@@ -1,0 +1,90 @@
+---
+layout: page
+published: true
+---
+
+<h1>Rock, Paper, Scissors</h1>
+
+<h3>No AI</h3>
+
+<center>
+<p>
+<div id="score">Score</div><p>
+
+<div id="output">Result</div><p>
+
+<button id="rock" onclick="rockPaperScissors('rock')">Rock</button>
+<button id="paper" onclick="rockPaperScissors('paper')">Paper</button>
+<button id="scissors" onclick="rockPaperScissors('scissors')">Scissors</button>
+
+</center>
+
+<hr>
+
+<h3>AI</h3>
+
+<center>
+<p>
+<div id="score-ai">Score</div><p>
+
+<div id="output-ai">Result</div><p>
+
+<button id="rock-ai" onclick="rockPaperScissorsAI('rock')">Rock</button>
+<button id="paper-ai" onclick="rockPaperScissorsAI('paper')">Paper</button>
+<button id="scissors-ai" onclick="rockPaperScissorsAI('scissors')">Scissors</button>
+
+</center>
+<button onclick="reset()">Reset</button>
+
+<script>
+  var scores = {"win": 0, "lose": 0, "draw": 0}
+  var scoresAI = {"win": 0, "lose": 0, "draw": 0}
+  var rules = {"rock": "paper", "scissors": "rock", "paper": "scissors"}
+  var previous = ["rock", "paper", "scissors"]
+  
+  function rockPaperScissors(user){
+    var outcome;
+
+    var computer = Object.keys(rules)[Math.floor(Math.random() * 3)]
+
+    if (rules[computer] == user){
+      outcome = "You win!"
+      scores["win"]++
+    }
+    else if (rules[user] == computer){
+      outcome = "You lose!"
+      scores["lose"]++
+    }
+    else{
+      outcome = "It's a draw!"
+      scores["draw"]++
+    }
+      
+    document.getElementById("score").innerHTML = `Score: Win=${scores['win']}, Lose=${scores['lose']}, Draw=${scores['draw']}` 
+    document.getElementById("output").innerHTML = `Result: The computer picked ${computer}. ${outcome}`
+  
+  }
+  
+  function rockPaperScissorsAI(user){
+    var computer = previous[Math.floor(Math.random() * previous.length)]
+ 
+    previous.push(user)
+
+    if (rules[computer] == user){
+      outcome = "You win!"
+      scoresAI["win"]++
+    }
+    else if (rules[user] == computer){
+      outcome = "You lose!"
+      scoresAI["lose"]++
+    }
+    else{
+      outcome = "It's a draw!"
+      scoresAI["draw"]++
+    }
+    
+    document.getElementById("score-ai").innerHTML = `Score: Win=${scoresAI['win']}, Lose=${scoresAI['lose']}, Draw=${scoresAI['draw']}` 
+    document.getElementById("output-ai").innerHTML = `Result: The computer picked ${computer}. ${outcome}`
+   
+  }
+</script>

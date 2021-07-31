@@ -1,0 +1,141 @@
+---
+layout: page
+published: true
+---
+<h1>Convert Integer to English</h1>
+
+<h3>Integer -> English</h3>
+
+E.g 5 ==> five
+<p>
+
+<input id="integer">
+<button onclick="intToEnglish()">Convert</button>
+
+<div id="integer-output"></div>
+
+<hr>
+<h3>English -> Integer</h3>
+
+E.g five ==> 5
+<p>
+
+<input id="english">
+<button onclick="englishToInt()">Convert</button>
+
+<div id="english-output"></div>
+
+<hr>
+
+<h3>Number Name</h3>
+<p>
+<input id="name">
+<button onclick="nameNumber()">Convert</button>
+<p>
+
+<div id="name-output"></div>
+
+<script type="text/javascript">
+  const prefix = ["thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion", "septillion", "octillion", "nonillion", "decillion", "undecillion", "duodecillion", "tredecillion", "quattuordecillion", "quinquadecillion", "sedecillion", "septendecillion", "octodecillion", "novendecillion", "vigintillion", "unvigintillion", "duovigintillion", "tresvigintillion", "quattuorvigintillion", "quinquavigintillion", "sesvigintillion", "septemvigintillion", "octovigintillion", "novemvigintillion", "trigintillion", "untrigintillion", "duotrigintillion", "trestrigintillion", "quattuortrigintillion", "quinquatrigintillion", "sestrigintillion", "septentrigintillion", "octotrigintillion", "noventrigintillion", "quadragintillion"];
+
+  var NBRS = {
+    "zero":0,"one":1,"two":2,"three":3,"four":4,"five":5,"six":6,"seven":7,"eight":8,"nine":9,
+    "ten":10,"eleven":11,"twelve":12,"thirteen":13,"fourteen":14,"fifteen":15,"sixteen":16,"seventeen":17,"eighteen":18,"nineteen":19,
+    "twenty":20,"thirty":30,"forty":40,"fifty":50,"sixty":60,"seventy":70,"eighty":80,"ninety":90,
+    "hundred":100,"thousand":1e3,"million":1e6,"billion":1e9,"trillion":1e12,"quadrillion":1e15,
+    "negative" : -1, "point":"."
+  }
+
+  var mapping = {
+    0: 'zero', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five',
+    6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten', 11: 'eleven',
+    12: 'twelve', 13: 'thirteen', 14: 'fourteen', 15: 'fifteen', 16: 'sixteen',
+    17: 'seventeen', 18: 'eighteen', 19: 'nineteen', 20: 'twenty',
+    30: 'thirty', 40: 'forty', 50: 'fifty', 60: 'sixty', 70: 'seventy',
+    80: 'eighty', 90: 'ninety'
+  };
+
+  var say1000Less = function(num){
+      var hundreds = Math.floor(num / 100), res = [];
+      if(hundreds > 0)
+          res.push(`${mapping[hundreds]} hundred`);
+      num = num % 100;
+      if(num != 0 || hundreds == 0){
+          var part = [];
+          if(num <= 20){
+              part.push(mapping[num]);
+          }else{
+              var tens = Math.floor(num / 10) * 10, ones = num % 10;
+              part.push(mapping[tens]);
+              if(ones > 0){
+                  part.push(mapping[ones]);
+              }
+          }
+          res.push(part.join('-'));
+      }
+      return res.join(' and ');
+  };
+
+  function intToEnglish(num){
+    var num = parseInt(document.getElementById("integer").value.replace(/,/g, "").trim().replace(/^(?!0$)0+/, ""))
+    var units = [[1000000000000000, 'quadrillion'], [1000000000000, 'trillion'], [1000000000, 'billion'], [1000000, 'million'], [1000, 'thousand'], [1, '']], res = [];
+    for(var unit of units){
+        var base = unit[0], word = unit[1], head = Math.floor(num / base);
+        num = num % base;
+        if(head > 0 || (res.length <= 0 && base == 1)){
+            res.push(`${say1000Less(head)} ${word}`);
+        }
+    }
+    document.getElementById("integer-output").innerHTML = res.join(' ').trim();
+  }
+  
+  
+  function englishToInt(){
+    var w = document.getElementById("english").value.trim()
+    
+    var ww = w.replace(/( and |\-)/g,' ').split( ' ' );
+    ww = ww.map(function(n){return NBRS[n] })
+
+    var sign = ww[0]<0? ww.shift() : 1;
+
+    var dec = 0, i = ww.indexOf(".");
+    if( i>-1 ){ 
+      if( ww.slice(i).some(function(v){return v>9}) ) throw "Sorry invalid word after 'point'"
+      dec += ww.slice(i).join(''); ww = ww.slice(0,i) 
+    }
+
+    var res = sign*(wordsToInt(ww)+ +dec);
+
+    if( isNaN(res) ) throw "Sorry, it seems '"+w+"' is not a valid number."
+    document.getElementById("english-output").innerHTML = res
+  }
+  
+
+  function wordsToInt(aa){
+    var powers = [1e15,1e12,1e9,1e6,1e3,100]
+    for(var p=0; p< powers.length; p++){
+      var i = aa.indexOf(powers[p]);
+      if( i>-1 ){ 
+        if( powers[p]==100 && aa[i-1]>9 ) throw "Sorry invalid word before 'hundred'";
+        return wordsToInt(aa.slice(0,i))*powers[p]+wordsToInt(aa.slice(i+1))
+      }
+    }
+    return aa.reduce(function(s,v){return s+v},0)
+  }
+  
+  function nameNumber(){
+    const inputValue = document.getElementById("name").value.replace(/,/g, "").trim().replace(/^(?!0$)0+/, "")
+    if (isNaN(+inputValue)){
+      return document.getElementById("name-output").innerHTML = "Invalid Number";
+    };
+    const n = inputValue.split(".")[0];
+    const nameLength = n.length - 1
+    
+    if (3 <= nameLength && nameLength <= 125){
+      document.getElementById("name-output").innerHTML = `${n.slice(0, ((n.length-1) % 3) + 1)} ${prefix[Math.floor(nameLength / 3)-1]}`;
+    }
+    else{
+      document.getElementById("name-output").innerHTML = inputValue;
+    } 
+  };
+</script>

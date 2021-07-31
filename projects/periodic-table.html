@@ -1,0 +1,84 @@
+---
+layout: page
+published: true
+---
+
+<h1>Element Decoder</h1>
+
+<h2>Symbol -> Element</h2>
+<p>E.g. HeAl -> Helium Aluminium</p>
+
+<form onsubmit="symbolDecode(); return false">
+  <p>
+    <input id="symbol" size="32">
+  </p>
+  <input type="submit">
+  <h3>Output: </h3>
+</form>
+
+<div id="symbol-output" style="margin-top: 10px; padding: 10px 5px; color: #444; line-height: 1.5;"></div>
+
+
+<h2>Element -> Symbol</h2>
+<p>E.g. Helium Aluminium -> HeAl </p>
+
+<form onsubmit="elementDecode(); return false">
+  <p>
+    <input id="element" size="32">
+  </p>
+  <input type="submit">
+  <h3>Output: </h3>
+</form>
+
+<div id="element-output" style="margin-top: 10px; padding: 10px 5px; color: #444; line-height: 1.5;"></div>
+
+<script type="text/javascript">
+
+const ELEMENTS = {'Te': 'Tellurium', 'V': 'Vanadium', 'Ta': 'Tantalum', 'Rb': 'Rubidium', 'Tb': 'Terbium', 'K': 'Potassium', 'Kr': 'Krypton', 'Md': 'Mendelevium', 'Cn': 'Copernicium', 'Be': 'Beryllium', 'O': 'Oxygen', 'F': 'Fluorine', 'Nb': 'Niobium', 'Tl': 'Thallium', 'Ne': 'Neon', 'N': 'Nitrogen', 'Rg': 'Roentgenium', 'Ag': 'Silver', 'Rn': 'Radon', 'Ba': 'Barium', 'Cu': 'Copper', 'Dy': 'Dysprosium', 'Po': 'Polonium', 'Mg': 'Magnesium', 'Pt': 'Platinum', 'Cr': 'Chromium', 'Uuo': 'Ununoctium', 'Ho': 'Holmium', 'Cm': 'Curium', 'Os': 'Osmium', 'Ir': 'Iridium', 'S': 'Sulfur', 'Am': 'Americium', 'Uus': 'Ununseptium', 'Lv': 'Livermorium', 'Se': 'Selenium', 'C': 'Carbon', 'Yb': 'Ytterbium', 'Es': 'Einsteinium', 'Re': 'Rhenium', 'Sr': 'Strontium', 'Ni': 'Nickel', 'He': 'Helium', 'Sc': 'Scandium', 'P': 'Phosphorus', 'Ds': 'Darmstadtium', 'Sn': 'Tin', 'Ce': 'Cerium', 'Pr': 'Praseodymium', 'Pm': 'Promethium', 'Zr': 'Zirconium', 'As': 'Arsenic', 'Th': 'Thorium', 'Lu': 'Lutetium', 'Si': 'Silicon', 'Pd': 'Palladium', 'Pa': 'Protactinium', 'B': 'Boron', 'Uut': 'Ununtrium', 'Ge': 'Germanium', 'Er': 'Erbium', 'Zn': 'Zinc', 'Mn': 'Manganese', 'W': 'Tungsten', 'Db': 'Dubnium', 'Al': 'Aluminium', 'H': 'Hydrogen', 'Mo': 'Molybdenum', 'Cf': 'Californium', 'At': 'Astatine', 'Pb': 'Lead', 'Hs': 'Hassium', 'Fm': 'Fermium', 'Ac': 'Actinium', 'Ru': 'Ruthenium', 'Cl': 'Chlorine', 'Mt': 'Meitnerium', 'Sm': 'Samarium', 'Xe': 'Xenon', 'Fe': 'Iron', 'Nd': 'Neodymium', 'Hg': 'Mercury', 'No': 'Nobelium', 'Co': 'Cobalt', 'Uup': 'Ununpentium', 'Cd': 'Cadmium', 'Pu': 'Plutonium', 'Lr': 'Lawrencium', 'Bh': 'Bohrium', 'Eu': 'Europium', 'Br': 'Bromine', 'Ca': 'Calcium', 'Au': 'Gold', 'Ar': 'Argon', 'Ti': 'Titanium', 'Gd': 'Gadolinium', 'Rh': 'Rhodium', 'Fl': 'Flerovium', 'In': 'Indium', 'Rf': 'Rutherfordium', 'Bk': 'Berkelium', 'Np': 'Neptunium', 'Na': 'Sodium', 'Ra': 'Radium', 'Fr': 'Francium', 'I': 'Iodine', 'Cs': 'Caesium', 'Tc': 'Technetium', 'Y': 'Yttrium', 'Sg': 'Seaborgium', 'Ga': 'Gallium', 'Bi': 'Bismuth', 'La': 'Lanthanum', 'Hf': 'Hafnium', 'U': 'Uranium', 'Sb': 'Antimony', 'Tm': 'Thulium', 'Li': 'Lithium'}
+
+var f = document.forms[0];
+  
+function solution(word){
+	var find = word.trim().replace(" ", "").match(/[A-Z][a-z]*/g)
+	if (!find){
+  	return "Doesn't exist"
+	}
+  find = find.map(x => ELEMENTS[x])
+  if (!find.includes(undefined)){
+  	return find.join(" ")
+  }
+  return "Doesn't exist"
+}
+  
+function symbolDecode() {
+	var symbolOutput = document.querySelector('#symbol-output');
+   
+	window.setTimeout(_ => {
+		symbolOutput.innerHTML = solution(f.symbol.value);
+	})
+}
+
+var c = document.forms[1];  
+
+function solutions(word){
+	var find = word.trim().replace(" ", "").match(/[A-Z][a-z]*/g)
+	if (!find){
+		return "Doesn't exist"
+	}
+	var ret = {};
+	for(var key in ELEMENTS){
+		ret[ELEMENTS[key]] = key;
+	}
+	return find.map(i => ret[i]).join("") || "Doesn't exist"
+}
+
+function elementDecode() {
+	var elementOutput = document.querySelector('#element-output')
+
+	window.setTimeout(_ => {
+		elementOutput.innerHTML = solutions(c.element.value);
+	})
+}
+</script>
+
+<h1>Element Encoder</h1>

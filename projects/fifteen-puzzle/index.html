@@ -1,0 +1,111 @@
+---
+layout: minimal
+published: true
+title: Fifteen Puzzle | Sam Nayak
+---
+
+<center>
+  <h1>Fifteen Puzzle</h1>
+</center>
+
+<style type="text/css">
+
+table {
+   border-collapse: collapse;
+}
+colgroup, tbody {
+  border: solid medium;
+}
+td {
+  border: solid thin;
+  text-align: center; padding: 0;
+  width: 90px;
+  height: 90px;
+  font-size: 22px;
+}
+
+#draggable {
+  width: 18%;
+  height: 10%;
+  position: absolute;
+  left: 2%;
+  top: 5%;
+}
+
+</style>
+
+<head>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#draggable" ).draggable();
+  } );
+  </script>
+</head>
+
+<div id="draggable" class="ui-widget-content">
+  <fieldset><legend>Puzzle Options</legend>
+    <p>
+      Size:
+      <input id="boxHeight" type="number" min="10" max="150" value="90" style="width:45;"> x
+      <input id="boxWidth" type="number" min="10" max="150" value="90" style="width:45;">
+    </p>
+    <p>
+      Grid Size: (NxN)
+      <input id="inputHeight" type="number" min="1" max="100" value="4" style="width:35;"> x
+      <input id="inputWidth" type="number" min="1" max="100" value="4" style="width:35;">
+    </p>
+
+    <div id="moves-output">Moves: 0</div><br>
+
+    <button type="button" onclick="generateBoard()">Generate</button>
+  </fieldset>
+</div>
+
+<center>
+  <div id="puzzleBoardDiv">
+    <table id="puzzleBoardTable">
+       <tr> <td id="0x0"> <td id="0x1"> <td id="0x2"> <td id="0x3">
+       <tr> <td id="1x0"> <td id="1x1"> <td id="1x2"> <td id="1x3">
+       <tr> <td id="2x0"> <td id="2x1"> <td id="2x2"> <td id="2x3">
+       <tr> <td id="3x0"> <td id="3x1"> <td id="3x2"> <td id="3x3">
+    </table>
+  </div>
+</center>
+         
+<script type="text/javascript" src="puzzle.js"></script>
+<script type="text/javascript">
+  
+document.getElementById("inputHeight").addEventListener("input", () => {
+  if (sizeCheck)
+    generateBoard();
+}, false);
+
+document.getElementById("inputWidth").addEventListener("input", () => {
+  if (sizeCheck)
+    generateBoard();
+}, false);
+
+
+document.getElementById("boxHeight").addEventListener("input", () => {
+  const elementHeight = +document.getElementById("boxHeight").value;
+  if (elementHeight < SIZE_MIN || elementHeight > SIZE_MAX) return false;
+  var changeDimensions = document.getElementsByTagName("td");
+
+  for (var i = 0; i < changeDimensions.length; i++)
+    changeDimensions[i].style.height = elementHeight + "px";
+}, false);
+
+document.getElementById("boxWidth").addEventListener("input", () => {
+  const elementWidth = +document.getElementById("boxWidth").value;
+  var changeDimensions = document.getElementsByTagName("td");
+  if (elementWidth < SIZE_MIN || elementWidth > SIZE_MAX) return false;
+
+  for (var i = 0; i < changeDimensions.length; i++)
+    changeDimensions[i].style.width = elementWidth + "px";
+}, false);
+  
+</script>
+
+

@@ -1,0 +1,112 @@
+---
+layout: page
+published: true
+---
+
+<h1>Genetic Algorithm</h1>
+<p>
+	
+<select id="fitness">
+  <option value="ff1">Fitness Function 1</option>
+  <option value="ff2">Fitness Function 2</option>
+  <option value="ff3">Fitness Function 3</option>
+</select>
+
+<button onclick="randomise()">Randomise All</button>
+<button onclick="runProgram()">Run</button>
+
+<p>
+<p>
+
+<label for="fader">Gene Number</label>
+<input type="range" min="1" max="100" value="32" id="fader" 
+	step="1" oninput="updateGene(value)">
+<output for="fader" id="gene">32</output>
+<p>
+
+<label for="fader">Population Size</label>
+<input type="range" min="1" max="250" value="100" id="fader" 
+	step="1" oninput="updatePopulation(value)">
+<output for="fader" id="population">100</output>
+<p>
+
+<label for="fader">Generation Number</label>
+<input type="range" min="0" max="250" value="100" id="fader" 
+	step="1" oninput="updateGeneration(value)">
+<output for="fader" id="generation">100</output>
+<p>
+
+<label for="fader">Mutation Rate</label>
+<input type="range" min="0" max="1" value="0.020" id="fader" 
+	step="0.001" oninput="updateMutation(value)">
+<output for="fader" id="mutation">0.020</output>
+<p>
+
+<label for="fader">Crossover Rate</label>
+<input type="range" min="0" max="1" value="0.600" id="fader" 
+	step="0.001" oninput="updateCrossover(value)">
+<output for="fader" id="crossover">0.600</output>
+<p>
+	
+<h2 id ="output"></h2>
+<p>
+	
+<div id="timer"></div>
+<div id="initial"></div>
+<div id="final"></div>
+<div id="ideal"></div>
+<div id="best"></div>
+
+
+<script type="text/javascript">
+
+  function randomise(){
+    return;
+  }
+	
+	function start(fitnessFunction, geneNumber, populationSize, generationNumber, mutationRate, crossoverRate){
+		return;
+	}
+	
+	function runProgram(){
+		const fitnessFunction = document.getElementById("fitness").value,
+					geneNumber = document.getElementById("gene").value,
+					populationSize = document.getElementById("population").value,
+					generationNumber = document.getElementById("generation").value,
+					mutationRate = document.getElementById("mutation").value,
+					crossoverRate = document.getElementById("crossover").value
+		
+		console.log(fitnessFunction, geneNumber, populationSize, generationNumber, mutationRate, crossoverRate);
+		
+		start(fitnessFunction, geneNumber, populationSize, generationNumber, mutationRate, crossoverRate);
+		
+		document.getElementById("output").innerHTML = "Output";
+		document.getElementById("timer").innerHTML = "m";
+		document.getElementById("initial").innerHTML = "m";
+		document.getElementById("final").innerHTML = "m";
+		document.getElementById("ideal").innerHTML = "m";
+		document.getElementById("best").innerHTML = "m";
+		
+	}
+  
+  function updateGene(vol) {
+    document.querySelector('#gene').value = vol;
+  }
+  function updatePopulation(vol) {
+    document.querySelector('#population').value = vol;
+  }
+  function updateGeneration(vol) {
+    document.querySelector('#generation').value = vol;
+  }
+  function updateMutation(vol) {
+    document.querySelector('#mutation').value = vol;
+  }
+  function updateCrossover(vol) {
+    document.querySelector('#crossover').value = vol;
+  }
+
+</script>
+
+
+
+

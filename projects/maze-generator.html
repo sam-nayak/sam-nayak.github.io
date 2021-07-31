@@ -1,0 +1,62 @@
+---
+layout: minimal
+published: true
+---
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!--
+<head>
+  <script src="util.js"></script>
+  <script src="maze.js"></script>
+  <script src="mazerenderer.js"></script>
+  <script src="kruskal.js"></script>
+  <script src="prim.js"></script>
+  <script src="depthfirstsearch.js"></script>
+  <script src="ivy.js"></script>
+  <script src="depthfirstivy.js"></script>
+  <script src="longestpathfinder.js"></script>
+  <script src="dijkstra.js"></script>
+</head>
+-->
+<body>
+<div style="padding-left:375px;">
+  <div style="overflow-y:auto; position:fixed; height:100%; margin-right:-375px; right:375px; width:375px;">
+    <fieldset><legend>Maze Generation</legend>
+      <p>
+        Topology:<br>
+        <label><input type="radio" name="topology" id="rectangleTopologyButton" checked>Rectangle</label><br>
+        <label><input type="radio" name="topology" id="outdoorTopologyButton">Rectangle with Outdoors</label><br>
+        <label><input type="radio" name="topology" id="torusTopologyButton">Torus</label><br>
+      </p>
+      <p>
+        Size:
+        <input id="sizeXTextbox" size="1" value="100"> x
+        <input id="sizeYTextbox" size="1" value="100">
+      </p>
+      <p>
+        Generation Algorithm:<br>
+        <label><input type="radio" name="generation-algorithm" id="depthFirstSearchAlgorithmButton" checked>Depth-First Search</label><br>
+        <label><input type="radio" name="generation-algorithm" id="primAlgorithmButton">Prim</label><br>
+        <label><input type="radio" name="generation-algorithm" id="depthFirstIvyAlgorithmButton">Depth-First Ivy</label><br>
+      </p>
+      <p>
+        Solution Algorithm:<br>
+        <label><input type="radio" name="solution-algorithm" id="aStarAlgorithm" checked>A*</label><br>
+        <label><input type="radio" name="solution-algorithm" id="dijkstasAlgorithm">Dijkstra's</label><br>
+      </p>
+      <p>
+        <button id="generationGoButton">Go</button>
+        <button id="generationStepButton">Step</button>
+        <button id="generationResetButton">Reset</button>
+      </p>
+    </fieldset>
+
+  </div>
+
+  <div style="overflow-x:auto; overflow-y:auto; width:100%; height:100%;">
+    <canvas id="mazeCanvas" height=160 width=160></canvas>
+  </div>
+</div>
+<script src="main.js"></script>
+</body>
+

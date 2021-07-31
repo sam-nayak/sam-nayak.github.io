@@ -1,0 +1,170 @@
+---
+layout: minimal
+published: true
+title: Sudoku | Sam Nayak
+---
+
+
+
+
+
+<head>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#draggable" ).draggable();
+  } );
+  </script>
+  <link rel="stylesheet" type="text/css" href="css/frame.css"/>
+  <script type="text/javascript" src="js/functions.js"></script>
+  <script type="text/javascript" src="js/body.js"></script>
+</head>
+
+<div id="draggable" class="ui-widget-content">
+  <fieldset><legend>Sudoku Options</legend>
+    See documentation <a href="https://www.samnayak.com/15-09-2016-sudoku/">here</a>
+    <p>
+      Size:
+      <input id="inputHeight" type="number" min="10" max="80" value="60" style="width:35;"> x
+      <input id="inputWidth" type="number" min="10" max="80" value="60" style="width:35;">
+    </p>
+    <p>
+      Box Size:(NxN)
+      <input id="gridSize" type="number" min="3" max="5" value="3" style="width:35;">
+    </p>
+    <p>
+      Generation Algorithm:<br>
+      <label><input type="radio" name="generation-algorithm" id="random" checked>Random Generation</label><br/>
+      <label><input type="radio" name="generation-algorithm" id="manual">Manual Input</label>
+    </p>
+    <p>
+      Solution Algorithm:<br>
+      <label><input type="radio" name="solution-algorithm" id="backtracking" checked>Backtracking</label><br>
+    </p>
+    <p>
+      Difficulty:<br>
+      <label><input type="radio" name="difficulty-setting" id="Easy">Easy</label><br>
+      <label><input type="radio" name="difficulty-setting" id="Medium" checked>Medium</label><br>
+      <label><input type="radio" name="difficulty-setting" id="Hard">Hard</label><br>
+    </p>
+    <p>
+      Type<br>
+      <label><input type="radio" name="inputType" id="numbers" onclick="sizeCheck(true)" checked>Numbers</label><br>
+      <label><input type="radio" name="inputType" id="letters" onclick="sizeCheck(true)">Letters</label><br>
+    </p>
+    <h1 id="displayTime"><time>00:00:00</time></h1>
+
+    <input type="button" onclick="newGame();return false" value="New Game"/>
+    <input type="button" onclick="validate();return false" value="Validate"/>
+    <input type="button" onclick="restart();return false" value="Restart"/>
+    <input type="button" onclick="showSolution();return false" value="Show Solution"/>
+    <input type="button" onclick="showStatistics();return false" value="Show Statistics"/>
+    <input type="button" onclick="showRules();return false" value="Show Rules"/>
+  </fieldset>
+</div>
+
+<div id="sudokuBoardDiv">
+  <table id="sudokuBoardTable">
+     <tr> <td id="1x1"> <td id="1x2"> <td id="1x3"> <td id="1x4"> <td id="1x5"> <td id="1x6"> <td id="1x7"> <td id="1x8"> <td id="1x9">
+     <tr> <td id="2x1"> <td id="2x2"> <td id="2x3"> <td id="2x4"> <td id="2x5"> <td id="2x6"> <td id="2x7"> <td id="2x8"> <td id="2x9">
+     <tr> <td id="3x1"> <td id="3x2"> <td id="3x3"> <td id="3x4"> <td id="3x5"> <td id="3x6"> <td id="3x7"> <td id="3x8"> <td id="3x9">
+    <colgroup><col><col><col>
+     <tr> <td id="4x1"> <td id="4x2"> <td id="4x3"> <td id="4x4"> <td id="4x5"> <td id="4x6"> <td id="4x7"> <td id="4x8"> <td id="4x9">
+     <tr> <td id="5x1"> <td id="5x2"> <td id="5x3"> <td id="5x4"> <td id="5x5"> <td id="5x6"> <td id="5x7"> <td id="5x8"> <td id="5x9">
+     <tr> <td id="6x1"> <td id="6x2"> <td id="6x3"> <td id="6x4"> <td id="6x5"> <td id="6x6"> <td id="6x7"> <td id="6x8"> <td id="6x9">
+    <colgroup><col><col><col>
+     <tr> <td id="7x1"> <td id="7x2"> <td id="7x3"> <td id="7x4"> <td id="7x5"> <td id="7x6"> <td id="7x7"> <td id="7x8"> <td id="7x9">
+     <tr> <td id="8x1"> <td id="8x2"> <td id="8x3"> <td id="8x4"> <td id="8x5"> <td id="8x6"> <td id="8x7"> <td id="8x8"> <td id="8x9">
+     <tr> <td id="9x1"> <td id="9x2"> <td id="9x3"> <td id="9x4"> <td id="9x5"> <td id="9x6"> <td id="9x7"> <td id="9x8"> <td id="9x9">
+  </table>
+</div>
+
+<script type="text/javascript">
+
+const SUDOKU_SIZE_MIN = 10,
+      SUDOKU_SIZE_MAX = 80;
+
+var BOX_SIZE = +document.getElementById("gridSize").value || 3,
+    BOARD_SIZE = (BOX_SIZE * BOX_SIZE);
+
+var displayTimer, changeDimensions;
+
+function addSudoku() {
+  var table = document.getElementById("sudokuBoardDiv");
+  table.removeChild(document.getElementById("sudokuBoardTable"));
+  var tableCreation = document.createElement("table");
+  tableCreation.id = "sudokuBoardTable";
+  const elementHeight = +document.getElementById("inputHeight").value;
+  const elementWidth = +document.getElementById("inputWidth").value;
+
+  for (var i = 0; i < BOARD_SIZE; i++){
+    if (i % BOX_SIZE == 0)
+      var tableBody = document.createElement("tbody");
+
+    var tr = document.createElement("tr");
+    tableBody.appendChild(tr);
+
+    for (var j = 1; j <= BOARD_SIZE; j++){
+      var td = document.createElement("td");
+      td.id = `${i+1}x${j}`;
+      td.style.height = elementHeight + "px";
+      td.style.width = elementWidth + "px";
+      tr.appendChild(td);
+    }
+
+    if (i % BOX_SIZE == 0){
+      tableCreation.appendChild(tableBody);
+      var colgroup = document.createElement("colgroup");
+      for (let _ = 0; _ < BOX_SIZE; _++)
+        colgroup.appendChild(document.createElement("col"));
+      tableCreation.appendChild(colgroup);
+    }
+  }
+  table.appendChild(tableCreation);
+
+  displayTimer = document.getElementById("displayTime");
+  changeDimensions = document.getElementsByTagName("td");
+}
+
+function sizeCheck(isChange=false){
+  BOX_SIZE = +document.getElementById("gridSize").value || 3;
+  if (BOX_SIZE > 3 && document.getElementById("numbers").checked){
+    return false;
+  }
+  if (BOX_SIZE <= 2 || BOX_SIZE > 5) return false;
+  if (isChange){
+    if (!isRevealed && isGenerated) return false;
+  }
+
+  BOARD_SIZE = (BOX_SIZE * BOX_SIZE);
+  SOLVED_SUDOKU = SOLVED[BOX_SIZE];
+
+  addSudoku();
+  return true;
+}
+
+window.onload = addSudoku;
+
+document.getElementById("gridSize").addEventListener("input", () => {
+  sizeCheck(true);
+}, false);
+
+
+document.getElementById("inputHeight").addEventListener("input", () => {
+  const elementHeight = +document.getElementById("inputHeight").value;
+  if (elementHeight < SUDOKU_SIZE_MIN || elementHeight > SUDOKU_SIZE_MAX) return false;
+
+  for (var i = 0; i < changeDimensions.length; i++)
+    changeDimensions[i].style.height = elementHeight + "px";
+}, false);
+
+document.getElementById("inputWidth").addEventListener("input", () => {
+  const elementWidth = +document.getElementById("inputWidth").value;
+  if (elementWidth < SUDOKU_SIZE_MIN || elementWidth > SUDOKU_SIZE_MAX) return false;
+
+  for (var i = 0; i < changeDimensions.length; i++)
+    changeDimensions[i].style.width = elementWidth + "px";
+}, false);
+
+</script>
