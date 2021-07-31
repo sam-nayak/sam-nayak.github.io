@@ -17,9 +17,9 @@ permalink: /blog/
         {% endif %}
     </a></b></h4>
 
-    <p style="margin-top: 5px;" class="post-meta">
+    <i><p class="post-meta">
       Published on {{ post.date | date: "%B %-d, %Y" }}
-    </p>
+    </p><i>
 
     <div style="margin-top: 5px;" class="post-entry">
       {{ post.excerpt | strip_html | xml_escape | truncatewords: site.excerpt_length }}
