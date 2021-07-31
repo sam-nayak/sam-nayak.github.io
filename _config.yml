@@ -22,11 +22,13 @@ title: Sam Nayak
 email: samnayak@live.co.uk
 description: >- # this means to ignore newlines until "baseurl:"
   My personal website
-baseurl: "/blog" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
+relativeurl: ""
 url: https://www.samnayak.com
 enforce_ssl: www.samnayak.com
 github_username:  sam-nayak
 future: true
+permalink: /:path/:name
 
 include: ['_pages']
 
