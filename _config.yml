@@ -22,7 +22,7 @@ title: Sam Nayak
 email: samnayak@live.co.uk
 description: >- # this means to ignore newlines until "baseurl:"
   My personal website
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: https://www.samnayak.com
 enforce_ssl: www.samnayak.com
 github_username:  sam-nayak
@@ -50,7 +50,6 @@ google_analytics: "UA-87284299-1"
 timezone: "Europe/London"
 markdown: kramdown
 highlighter: rouge
-permalink: /:day-:month-:year-:title/
 paginate: 5
 
 kramdown:
