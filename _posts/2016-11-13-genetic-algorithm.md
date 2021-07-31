@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: document
 published: true
 title: Genetic Algorithms as An Approach for Machine Learning
 subtitle: EPQ Project
@@ -63,13 +63,13 @@ promote genetic diversity and should improve the 'score' given to each individua
 
 2. ```Fitness Evaluation``` - Each chromosome is evaluated and given a fitness score regarding how close they are to the ideal solution.
 
-3. ```Selection```          - A new population of chromosomes is created based on their fitness level. 
-                        The chromosomes with a higher fitness have a higher probability of getting selected 
+3. ```Selection```          - A new population of chromosomes is created based on their fitness level.
+                        The chromosomes with a higher fitness have a higher probability of getting selected
                         and therefore the best chromosomes survive (survival of the fittest).
 
 4. ```Crossover```          - The chromosomes in the population will swap their genes with one another (given a randomly generated crossover point).
 
-5. ```Mutation```           - Given a certain mutation rate (probability), each gene may invert (0 -> 1, 1 -> 0). 
+5. ```Mutation```           - Given a certain mutation rate (probability), each gene may invert (0 -> 1, 1 -> 0).
                         Repeat step 2-5 until the best solution has a perfect fitness or the generation number is exceeded.
 
 6. ```Final generation```    - The final/best solution is generated.
@@ -90,7 +90,7 @@ promote genetic diversity and should improve the 'score' given to each individua
 - ```crossover_type```:  which crossover variant is selected
 - ```function_type```:   determines which fitness function is used
 
-### Note: 
+### Note:
 - A high mutation rate may significantly decrease the best solution since the genes are inverted which change each chromosome in the population.
 - A low crossover rate may significantly decrease the best solution because the genes aren't inherited onto the next generation.
 
@@ -138,7 +138,7 @@ An average fitness of the population is determined at termination (generation nu
 
 
 ## Ideal solution:
-   
+
 The ideal solution is the expected outcome to the problem. This ideal solution is a randomly generated binary string and represents an answer/solution to the problem, however the ideal solution is dynamic and will change each time the program is run. The ideal solution is compared to each chromosome in the population and is therefore the basis of the fitness function.
 
 
@@ -146,6 +146,6 @@ The ideal solution is the expected outcome to the problem. This ideal solution i
 
 ## Best solution:
 
-The best solution is the chromosome with the highest fitness (perfect fitness is 1). If the perfect fitness is achieved within the generation number (generation < generation_number) then the current generation is now the final generation. If generation = generation_number then the program will terminate and the best solution of the last and current generation represents the overall best solution - this may not be fitness 1. 
+The best solution is the chromosome with the highest fitness (perfect fitness is 1). If the perfect fitness is achieved within the generation number (generation < generation_number) then the current generation is now the final generation. If generation = generation_number then the program will terminate and the best solution of the last and current generation represents the overall best solution - this may not be fitness 1.
 
 The best fitness each generation will vary and it is important to note that the best fitness of the previous generation may be higher than the best fitness of the current generation. The best fitness is dynamic since the operators act on all of the chromosome until at least one of them has a perfect fitness.
