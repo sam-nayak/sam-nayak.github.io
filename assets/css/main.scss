@@ -1,8 +1,8 @@
 ---
 ---
 
-@use "monokai";
-@use "friendly";
+@use "monokai.css";
+@use "friendly.css";
 
 @media (prefers-color-scheme: dark) {
     html, html[data-theme="dark"] {
