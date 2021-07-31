@@ -1,10 +1,10 @@
 ---
 ---
 
-@import "monokai.css";
-
 @media (prefers-color-scheme: dark) {
     html, html[data-theme="dark"] {
+        @import "monokai.css";
+
         --main-background-color: rgb(24, 24, 24);
         --main-text-color: rgb(218, 218, 218);
         --main-text-color-rgb:218, 218, 218;
@@ -19,6 +19,8 @@
     }
 
     html[data-theme="light"] {
+        @import "friendly.css";
+
         --main-background-color: rgb(230, 230, 230);
         --main-text-color: rgb(24, 24, 24);
         --main-text-color-rgb:24, 24, 24;
