@@ -2,7 +2,11 @@
 ---
 
 @use "monokai.css" as monokai;
+<<<<<<< HEAD
 @use "friendly.css" as friendly;
+=======
+@use "friendly.css" friendly;
+>>>>>>> 98dd3d6c2ad755b2990fc69983f17674f2ab9764
 
 @media (prefers-color-scheme: dark) {
     html, html[data-theme="dark"] {
