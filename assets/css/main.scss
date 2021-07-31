@@ -1,9 +1,12 @@
 ---
 ---
 
+@use "monokai";
+@use "friendly";
+
 @media (prefers-color-scheme: dark) {
     html, html[data-theme="dark"] {
-        @import "_monokai.scss";
+        @include monokai;
 
         --main-background-color: rgb(24, 24, 24);
         --main-text-color: rgb(218, 218, 218);
@@ -17,7 +20,7 @@
     }
 
     html[data-theme="light"] {
-        @import "_friendly.scss";
+        @include friendly;
 
         --main-background-color: rgb(230, 230, 230);
         --main-text-color: rgb(24, 24, 24);
