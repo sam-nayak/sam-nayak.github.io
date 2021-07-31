@@ -28,7 +28,7 @@ url: https://www.samnayak.com
 enforce_ssl: www.samnayak.com
 github_username:  sam-nayak
 future: true
-permalink: /:path/
+permalink: /:path/:title
 
 include: ['_pages']
 
