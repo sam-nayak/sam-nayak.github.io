@@ -28,6 +28,7 @@ enforce_ssl: www.samnayak.com
 
 future: true
 permalink: /blog/:title
+date: "%-d %B %Y"
 
 author:
   name: sam-nayak
@@ -113,7 +114,7 @@ author:
   name: Sam Nayak
   email: "samnayak@live.co.uk"
   facebook: yourname  # eg. daattali
-  github: AcesOfGlory    # eg. daattali
+  github: sam-nayak    # eg. daattali
   twitter: yourname   # eg. daattali
   reddit: yourname    # eg. daattali
   google-plus: +yourname   # eg. +DeanAttali or 109424658772469020925
