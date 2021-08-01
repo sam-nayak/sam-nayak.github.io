@@ -216,10 +216,11 @@ pre code {
 // }
 
 .highlight pre {
-  color: inherit;
-  border: none;
-  background: none;
-  margin: 0;
+  background-color: var(--code-background-color);
+  color: var(--code-color);
+  font-size: 103%;
+  border-radius: 5px;
+  padding: 2px;
 }
 
 .highlight > pre:not([class~="highlight"]) { /* code block with line number */
