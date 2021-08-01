@@ -187,6 +187,19 @@ code {
       padding: 2px;
 }
 
+pre > code {
+    margin: 10px;
+    display: block;
+}
+
+pre {
+    background-color: var(--code-background-color);
+    color: var(--code-color);
+    font-size: 103%;
+    border-radius: 5px;
+    padding: 2px;
+}
+
 // large code block
 // <pre><code></code></pre>
 pre code {
