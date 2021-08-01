@@ -213,13 +213,13 @@ pre {
 
 
 // MD code blocks
-.highlight pre {
-  color: inherit;
-  background-color: inherit;
-  font-size: 103%;
-  border-radius: 5px;
-  padding: 2px;
-}
+// .highlight pre {
+//   color: inherit;
+//   background-color: inherit;
+//   font-size: 103%;
+//   border-radius: 5px;
+//   padding: 2px;
+// }
 
 .highlight > pre:not([class~="highlight"]) { /* code block with line number */
   padding: 0;
