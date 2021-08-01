@@ -368,3 +368,7 @@ $table-border-color:    $border-color-01 !default;
     }
   }
 }
+
+@mixin relative-font-size($ratio) {
+  font-size: #{$ratio}rem;
+}
