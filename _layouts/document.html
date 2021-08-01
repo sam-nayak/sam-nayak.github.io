@@ -16,7 +16,7 @@ layout: default
 
 <h5 class="centered" ><i>{{ page.subtitle }}</i></h5>
 
-<p class="centered published">Published on <time>{{ page.date | date: {{ site.date }} }}</time>
+<p class="centered published">Published on <time>{{ page.date | date: site.date }}</time>
 
 
 <div id="content">{{ content  }}</div>
