@@ -295,6 +295,10 @@ $table-header-bg-color: lighten($brand-color, 43%) !default;
 $table-header-border:   lighten($brand-color, 37%) !default;
 $table-border-color:    $border-color-01 !default;
 
+@mixin relative-font-size($ratio) {
+  font-size: #{$ratio}rem;
+}
+
 .site-footer {
   border-top: 1px solid $border-color-01;
   padding: $spacing-unit 0;
@@ -367,8 +371,4 @@ $table-border-color:    $border-color-01 !default;
       padding-left: $spacing-unit / 2;
     }
   }
-}
-
-@mixin relative-font-size($ratio) {
-  font-size: #{$ratio}rem;
 }
