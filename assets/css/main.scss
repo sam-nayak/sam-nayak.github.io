@@ -177,26 +177,6 @@ th, td {
 
 /* --- Code blocks --- */
 
-// one line code block
-// <code></code>
-code {
-      color: #e83e8c;
-      background-color: rgb(19, 19, 19);
-      font-size: 103%;
-      border-radius: 5px;
-      padding: 2px;
-}
-
-pre > code {
-    margin: 10px;
-    display: block;
-}
-
-pre {
-    font-size: 103%;
-    border-radius: 5px;
-    padding: 2px;
-}
 
 // large code block
 // <pre><code></code></pre>
@@ -206,13 +186,28 @@ pre code {
   border-radius: 0;
 }
 
-// pre {
-//   font-size: 0.875rem;
-//   line-height: 1.5em;
-//   border-radius: 0.25rem;
-//   padding: 0.59375rem;
-// }
+pre {
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
 
+code {
+    color: #e83e8c;
+    background-color: rgb(19, 19, 19);
+}
+
+pre > code {
+    margin: 10px;
+    display: block;
+}
+
+code, pre {
+    font-size: 103%;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+// MD code blocks
 .highlight pre {
   color: inherit;
   background-color: inherit;
