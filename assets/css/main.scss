@@ -177,23 +177,9 @@ th, td {
 
 /* --- Code blocks --- */
 
-
-// large code block
-// <pre><code></code></pre>
-pre code {
-  padding: 0;
-  background-color: transparent;
-  border-radius: 0;
-}
-
 pre {
     margin-top: 10px;
     margin-bottom: 40px;
-}
-
-code {
-    color: #e83e8c;
-    background-color: rgb(19, 19, 19);
 }
 
 pre > code {
@@ -202,6 +188,8 @@ pre > code {
 }
 
 code, pre {
+    background-color: var(--code-background-color);
+    color: var(--code-color);
     font-size: 103%;
     border-radius: 5px;
     padding: 2px;
