@@ -19,7 +19,7 @@ permalink: /blog/
 
     <p class="post-meta">
       Published on {{ post.date | date: "%B %-d, %Y" }}
-    </p></i>
+    </p>
 
     <div style="margin-top: 5px;" class="post-entry">
       {{ post.excerpt | strip_html | xml_escape | truncatewords: site.excerpt_length }}
