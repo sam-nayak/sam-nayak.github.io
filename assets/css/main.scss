@@ -179,6 +179,8 @@ th, td {
 
 // small code block
 code {
+      color: #e83e8c;
+      background-color: rgb(19, 19, 19);
       font-size: 100%;
       border-radius: 5px;
       padding: 2px;
@@ -196,22 +198,23 @@ pre {
   border-radius: 0.25rem;
   padding: 0.59375rem;
 }
-.highlight pre {
-  border: none;
-  background: none;
-  margin: 0;
-}
-.highlight > pre {
-  background-image: linear-gradient(
-    rgba(0,0,0,0.03), rgba(0,0,0,0.03) 1.5em, rgba(0,0,0,0.02) 1.5em, rgba(0,0,0,0.02) 3em);
-  background-size: auto 3em;
-  background-position-y: 0.625rem;
-  border: 1px solid rgba(0,0,0,0.1);
-  border-left: 0.4375rem solid #444;
-}
-.highlight > pre:not([class~="highlight"]) { /* code block with line number */
-  padding: 0;
-}
+// .highlight pre {
+//   border: none;
+//   background: none;
+//   margin: 0;
+// }
+// .highlight > pre {
+//   background-image: linear-gradient(
+//     rgba(0,0,0,0.03), rgba(0,0,0,0.03) 1.5em, rgba(0,0,0,0.02) 1.5em, rgba(0,0,0,0.02) 3em);
+//   background-size: auto 3em;
+//   background-position-y: 0.625rem;
+//   border: 1px solid rgba(0,0,0,0.1);
+//   border-left: 0.4375rem solid #444;
+// }
+// .highlight > pre:not([class~="highlight"]) { /* code block with line number */
+//   padding: 0;
+// }
+
 .highlight table,
 .highlight tr,
 .highlight td { /* to be removed after fixing table styles */
