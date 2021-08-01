@@ -248,37 +248,12 @@ pre {
   background: none;
 }
 
-footer {
-  padding: 30px 0;
-  background: #F5F5F5;
-  border-top: 1px #EAEAEA solid;
-  margin-top: 50px;
-  font-size: 14px;
-}
-footer a {
-  color: #404040;
-}
-footer .list-inline {
-  margin: 0;
-  padding: 0;
-}
-footer .copyright {
-  font-family: Open Sans;
+footer.footer-min {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 3px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #eeeeee;
   text-align: center;
-  margin-bottom: 0;
-}
-footer .theme-by {
-  text-align: center;
-  margin: 10px 0 0;
-}
-@media only screen and (min-width: 768px) {
-  footer {
-    padding: 50px 0;
-  }
-  footer .footer-links {
-    font-size: 18px;
-  }
-  footer .copyright {
-    font-size: 16px;
-  }
 }
