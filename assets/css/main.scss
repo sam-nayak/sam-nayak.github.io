@@ -174,3 +174,78 @@ th, td {
   margin: 0 0 10px;
   margin-top: -5px;
 }
+
+/* --- Code blocks --- */
+
+// one line code block
+// <code></code>
+code {
+      color: #e83e8c;
+      background-color: rgb(19, 19, 19);
+      font-size: 103%;
+      border-radius: 5px;
+      padding: 2px;
+}
+
+pre > code {
+    margin: 10px;
+    display: block;
+}
+
+pre {
+    font-size: 103%;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+// large code block
+// <pre><code></code></pre>
+pre code {
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+pre {
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+
+// MD code blocks
+.highlight pre {
+  color: inherit;
+  background-color: inherit;
+  font-size: 103%;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.highlight > pre:not([class~="highlight"]) { /* code block with line number */
+  padding: 0;
+}
+
+.highlight table,
+.highlight tr,
+.highlight td { /* to be removed after fixing table styles */
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+.highlight pre.lineno {
+  color: rgba(0,0,0,0.3);
+  border-radius: 0;
+  border-right: 2px solid #444;
+}
+
+/* Make line numbers unselectable: excludes line numbers from copy-paste user ops */
+.lineno {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.lineno::selection, .lineno::-moz-selection {
+  background: none;
+}
