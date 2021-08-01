@@ -79,70 +79,25 @@ if (currentTheme === "dark") {
     document.getElementById("theme-toggle").innerHTML = "Dark Mode";
 }
 
-var clock = {
+function clock() {// We create a new Date object and assign it to a variable called "time".
+var time = new Date(),
 
-  digits : ["zero", "one", "two", "three", "foure", "five", "six", "seven", "eight", "nine"],
+    // Access the "getHours" method on the Date object with the dot accessor.
+    hours = time.getHours(),
 
-  init : function(){
-    var $digit = $('.digit');
-
-    // Ugly....
-    this.hour = [$($digit[0]), $($digit[1])];
-    this.min  = [$($digit[2]), $($digit[3])];
-    this.sec  = [$($digit[4]), $($digit[5])];
+    // Access the "getMinutes" method with the dot accessor.
+    minutes = time.getMinutes(),
 
 
-    this.drawInterval(this.drawSecond, function(time){
-      return 1000 - time[3];
-    })
+    seconds = time.getSeconds();
 
-    this.drawInterval(this.drawMinute, function(time){
-      return 60000 - time[2] * 1000 - time[3];
-    })
+document.querySelectorAll('.clock')[0].innerHTML = harold(hours) + ":" + harold(minutes) + ":" + harold(seconds);
 
-
-   this.drawInterval(this.drawHour, function(time){
-      return (60 - time[1]) * 60000 - time[2] * 1000 - time[3];
-    })
-
-  },
-
-  getTimeArray : function(){
-    var dat = new Date();
-    return [dat.getHours(), dat.getMinutes(), dat.getSeconds(), dat.getMilliseconds()];
-  },
-
-  drawInterval : function(func, timeCallback){
-    var time = this.getTimeArray();
-
-    func.call(this, time);
-
-    var that = this;
-    setTimeout(function(){
-        that.drawInterval(func, timeCallback);
-    }, timeCallback(time));
-  },
-
-  drawHour : function(time){
-    this.drawDigits(this.hour, time[0]);
-  },
-
-  drawMinute : function(time){
-  	this.drawDigits(this.min,  time[1]);
-  },
-
-  drawSecond : function(time){
-  	this.drawDigits(this.sec,  time[2]);
-  },
-
-  drawDigits : function(digits, digit){
-    var ten = Math.floor(digit / 10);
-    var one = Math.floor(digit % 10);
-
-    digits[0].attr('class', 'digit '+this.digits[ten]);
-    digits[1].attr('class', 'digit '+this.digits[one]);
+  function harold(standIn) {
+    if (standIn < 10) {
+      standIn = '0' + standIn
+    }
+    return standIn;
   }
-
-};
-
-clock.init();
+}
+setInterval(clock, 1000);
