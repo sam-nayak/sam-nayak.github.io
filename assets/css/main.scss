@@ -181,15 +181,16 @@ th, td {
 code {
       color: #e83e8c;
       background-color: rgb(19, 19, 19);
-      font-size: 100%;
+      font-size: 103%;
       border-radius: 5px;
       padding: 2px;
 }
 
 pre code {
-  padding: 0;
-  background-color: transparent;
-  border-radius: 0;
+  font-size: 0.875rem;
+  line-height: 1.5em;
+  border-radius: 0.25rem;
+  padding: 0.59375rem;
 }
 
 pre {
@@ -211,9 +212,9 @@ pre {
 //   border: 1px solid rgba(0,0,0,0.1);
 //   border-left: 0.4375rem solid #444;
 // }
-// .highlight > pre:not([class~="highlight"]) { /* code block with line number */
-//   padding: 0;
-// }
+.highlight > pre:not([class~="highlight"]) { /* code block with line number */
+  padding: 0;
+}
 
 .highlight table,
 .highlight tr,
