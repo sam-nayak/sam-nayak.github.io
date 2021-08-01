@@ -193,8 +193,6 @@ pre > code {
 }
 
 pre {
-    background-color: var(--code-background-color);
-    color: var(--code-color);
     font-size: 103%;
     border-radius: 5px;
     padding: 2px;
@@ -216,8 +214,6 @@ pre code {
 // }
 
 .highlight pre {
-  background-color: var(--code-background-color);
-  color: var(--code-color);
   font-size: 103%;
   border-radius: 5px;
   padding: 2px;
