@@ -291,33 +291,36 @@ footer.footer-min {
     fill: #828282; }
 
 
+// Typewriter
+
+
 .typing > *{
   overflow: hidden;
   white-space: nowrap;
   animation: typingAnim 5s steps(50);
 }
 
-.typing > *::after{
-  content: ". .";
-  display: block;
-  position: absolute;
-  top: 1em;
-  left: .35em;
-}
-
-.typing > *::before{
-  content: "";
-  position: absolute;
-  display: block;
-  top: 2.1em;
-  left: .25em;
-  width: 1em;
-  height: .1em;
-  border-radius: 100%;
-  background: #fff;
-  animation: typingSpeak .5s steps(2);
-  animation-iteration-count: 5;
-}
+// .typing > *::after{
+//   content: ". .";
+//   display: block;
+//   position: absolute;
+//   top: 1em;
+//   left: .35em;
+// }
+//
+// .typing > *::before{
+//   content: "";
+//   position: absolute;
+//   display: block;
+//   top: 2.1em;
+//   left: .25em;
+//   width: 1em;
+//   height: .1em;
+//   border-radius: 100%;
+//   background: #fff;
+//   animation: typingSpeak .5s steps(2);
+//   animation-iteration-count: 5;
+// }
 
 
 @keyframes typingAnim{
